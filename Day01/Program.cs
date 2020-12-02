@@ -39,7 +39,7 @@ namespace Day01
                     items.Add((valueA, valueB, valueA + valueB));
             }
 
-            foreach(var valueC in Input)
+            foreach (var valueC in Input)
             {
                 var valueAB = items.FirstOrDefault(x => 2020 - valueC == x.Item3);
                 if (valueAB.Equals(default))
