@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -12,8 +13,14 @@ namespace Day02
         {
             Input = File.ReadLines("Input.txt").ToArray();
 
+            var watch = new Stopwatch();
+            watch.Start();
+
             Loop(ValidateItemEquality);
             Loop(ValidateItemIndexes);
+
+            watch.Stop();
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~45 ms
         }
 
         static void Loop(Func<string, bool> method)

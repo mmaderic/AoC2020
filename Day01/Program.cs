@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -13,8 +14,14 @@ namespace Day01
         {
             Input = File.ReadLines("Input.txt").Select(x => Convert.ToInt32(x)).ToArray();
 
+            var watch = new Stopwatch();
+            watch.Start();
+
             PartOne();
             PartTwo();
+
+            watch.Stop();
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~47 ms
         }
 
         static void PartOne()
