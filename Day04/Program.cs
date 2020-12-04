@@ -34,7 +34,7 @@ namespace Day04
             }
 
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~77 ms
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~65 ms
             Console.WriteLine(count);
         }
 
@@ -44,18 +44,19 @@ namespace Day04
             for (int i = start; i < end; i++)
                 lines.Add(Input[i]);
 
-            var passport = string.Join(" ", lines).Split(" ");
-            if (passport.Length < 7)
+            var passport = string.Join(" ", lines);
+            var passportFields = passport.Split(" ");
+            if (passportFields.Length < 7)
                 return 0;
 
-            if (passport.Length == 7)
+            if (passportFields.Length == 7)
             {
-                if (!string.Join(" ", passport).Contains("cid"))
-                    return ValidateFields(passport);
+                if (!passport.Contains("cid"))
+                    return ValidateFields(passportFields);
                 return 0;
             }
 
-            return ValidateFields(passport);
+            return ValidateFields(passportFields);
         }
 
         static int ValidateFields(string[] passport)
