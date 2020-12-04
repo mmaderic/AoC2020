@@ -15,6 +15,8 @@ namespace Day04
             "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
         };
 
+        static Regex HairColor = new Regex(@"^#(?:[0-9a-f]{6})$");
+
         static void Main(string[] args)
         {
             Input = File.ReadLines("Input.txt").ToArray();
@@ -34,7 +36,7 @@ namespace Day04
             }
 
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~65 ms
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~36 ms
             Console.WriteLine(count);
         }
 
@@ -98,8 +100,7 @@ namespace Day04
         static bool ValidateHairColor(string field)
         {
             var color = field.Split(":")[1];
-            Regex regex = new Regex(@"^#(?:[0-9a-f]{6})$");
-            Match match = regex.Match(color);
+            var match = HairColor.Match(color);
 
             return match.Success;
         }
