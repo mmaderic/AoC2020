@@ -42,11 +42,7 @@ namespace Day04
 
         static int Validate(int start, int end)
         {
-            var lines = new List<string>();
-            for (int i = start; i < end; i++)
-                lines.Add(Input[i]);
-
-            var passport = string.Join(" ", lines);
+            var passport = string.Join(" ", Input[start..end]);
             var passportFields = passport.Split(" ");
             if (passportFields.Length < 7)
                 return 0;
