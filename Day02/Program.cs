@@ -16,20 +16,21 @@ namespace Day02
             var watch = new Stopwatch();
             watch.Start();
 
-            Loop(ValidateItemEquality);
-            Loop(ValidateItemIndexes);
+            var countA = Loop(ValidateItemEquality);
+            var countB = Loop(ValidateItemIndexes);
 
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~45 ms
+            Console.WriteLine($"{countA}, {countB}");
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~20 ms
         }
 
-        static void Loop(Func<string, bool> method)
+        static int Loop(Func<string, bool> method)
         {
             var count = 0;
             foreach (var item in Input)
                 count += Convert.ToInt32(method.Invoke(item));
 
-            Console.WriteLine(count);
+            return count;
         }
 
         static bool ValidateItemEquality(string item)

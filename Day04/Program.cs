@@ -35,8 +35,8 @@ namespace Day04
             }
 
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~36 ms
             Console.WriteLine(count);
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~40 ms
         }
 
         static int Validate(int start, int end)

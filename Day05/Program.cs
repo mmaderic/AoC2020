@@ -19,8 +19,8 @@ namespace Day05
             var (max, id) = ExecuteTask();
             
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~17ms
             Console.WriteLine($"{max}, {id}");
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~17ms
         }
 
         static (int, int) ExecuteTask()

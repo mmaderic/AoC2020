@@ -17,14 +17,15 @@ namespace Day01
             var watch = new Stopwatch();
             watch.Start();
 
-            PartOne();
-            PartTwo();
+            var numA = PartOne();
+            var numB = PartTwo();
 
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~47 ms
+            Console.WriteLine($"{numA}, {numB}");
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~29 ms
         }
 
-        static void PartOne()
+        static int PartOne()
         {
             foreach (var valueA in Input)
             {
@@ -32,12 +33,13 @@ namespace Day01
                 if (valueB.Equals(default))
                     continue;
                 
-                Console.WriteLine(valueA * valueB);
-                break;                
+                return valueA * valueB;
             }
+
+            return default;
         }
 
-        static void PartTwo()
+        static int PartTwo()
         {
             var items = new List<(int, int, int)>();
             foreach (var valueA in Input)
@@ -52,9 +54,10 @@ namespace Day01
                 if (valueAB.Equals(default))
                     continue;
 
-                Console.WriteLine(valueAB.Item1 * valueAB.Item2 * valueC);
-                break;
+                return valueAB.Item1 * valueAB.Item2 * valueC;
             }
+
+            return default;
         }
     }
 }

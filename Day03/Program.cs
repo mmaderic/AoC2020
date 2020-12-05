@@ -23,9 +23,8 @@ namespace Day03
             var e = Loop(1, 2);
 
             watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~0 ms
-
             Console.WriteLine((long)a * b * c * d * e);
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~0 ms
         }
 
         static int Loop(int xOffest, int yOffest)
