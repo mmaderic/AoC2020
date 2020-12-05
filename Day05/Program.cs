@@ -15,7 +15,16 @@ namespace Day05
 
             var watch = new Stopwatch();
             watch.Start();
+           
+            var (max, id) = ExecuteTask();
+            
+            watch.Stop();
+            Console.WriteLine(watch.ElapsedMilliseconds); // ~17ms
+            Console.WriteLine($"{max}, {id}");
+        }
 
+        static (int, int) ExecuteTask()
+        {
             var max = 0;
             var map = Enumerable.Range(0, 128).Select(x => new int[8]).ToArray();
             foreach (var item in Input)
@@ -32,15 +41,11 @@ namespace Day05
             var ids = map.SelectMany(x => x).ToArray();
             for (int i = 1; i < ids.Length - 1; i++)
             {
-                if (ids[i - 1] != 0 && ids[i] == 0 && ids[i + 1] != 0)
-                {
-                    Console.WriteLine(i);
-                    break;
-                }
+                if (ids[i - 1] != 0 && ids[i] == 0 && ids[i + 1] != 0)                
+                    return (max, i);                
             }
 
-            watch.Stop();
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~35 ms
+            return default;
         }
 
         static int ReadValue(string boardingPass, int min, int max, char c, int start, int end)
