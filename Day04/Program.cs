@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using AoC2020.Benchmark;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -20,9 +20,15 @@ namespace Day04
         {
             Input = File.ReadLines("Input.txt").ToArray();
 
-            var watch = new Stopwatch();
-            watch.Start();
+            var count = RunTask();
+            var (miliseconds, ticks) = Benchmark.Execute(() => RunTask());
 
+            Console.WriteLine(count);
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~16 ms
+        }
+
+        static int RunTask()
+        {
             var count = 0;
             var start = 0;
             for (int i = 0; i < Input.Length; i++)
@@ -31,12 +37,10 @@ namespace Day04
                 {
                     count += Validate(start, i);
                     start = i + 1;
-                }                
+                }
             }
 
-            watch.Stop();
-            Console.WriteLine(count);
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~40 ms
+            return count;
         }
 
         static int Validate(int start, int end)

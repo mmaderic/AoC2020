@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using AoC2020.Benchmark;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -11,10 +11,7 @@ namespace Day03
 
         static void Main(string[] args)
         {
-            Input = File.ReadLines("Input.txt").ToArray();
-
-            var watch = new Stopwatch();
-            watch.Start();
+            Input = File.ReadLines("Input.txt").ToArray();           
 
             var a = Loop(1, 1);
             var b = Loop(3, 1);
@@ -22,9 +19,17 @@ namespace Day03
             var d = Loop(7, 1);
             var e = Loop(1, 2);
 
-            watch.Stop();
+            var (miliseconds, ticks) = Benchmark.Execute(() =>
+            {
+                Loop(1, 1);
+                Loop(3, 1);
+                Loop(5, 1);
+                Loop(7, 1);
+                Loop(1, 2);
+            });
+          
             Console.WriteLine((long)a * b * c * d * e);
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~0 ms
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~87 ticks
         }
 
         static int Loop(int xOffest, int yOffest)

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using AoC2020.Benchmark;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -12,15 +12,12 @@ namespace Day05
         static void Main(string[] args)
         {
             Input = File.ReadLines("Input.txt").ToArray();
-
-            var watch = new Stopwatch();
-            watch.Start();
            
             var (max, id) = ExecuteTask();
-            
-            watch.Stop();
+            var (miliseconds, ticks) = Benchmark.Execute(() => ExecuteTask());
+
             Console.WriteLine($"{max}, {id}");
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~17ms
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~750 ticks
         }
 
         static (int, int) ExecuteTask()

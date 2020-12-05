@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using AoC2020.Benchmark;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -13,15 +13,13 @@ namespace Day02
         {
             Input = File.ReadLines("Input.txt").ToArray();
 
-            var watch = new Stopwatch();
-            watch.Start();
-
             var countA = Loop(ValidateItemEquality);
             var countB = Loop(ValidateItemIndexes);
 
-            watch.Stop();
+            var (miliseconds, ticks) = Benchmark.Execute(() => { Loop(ValidateItemEquality); Loop(ValidateItemIndexes); });
+
             Console.WriteLine($"{countA}, {countB}");
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~20 ms
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~1 ms
         }
 
         static int Loop(Func<string, bool> method)

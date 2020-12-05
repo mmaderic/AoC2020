@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AoC2020.Benchmark;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -12,17 +12,15 @@ namespace Day01
 
         static void Main(string[] args)
         {
-            Input = File.ReadLines("Input.txt").Select(x => Convert.ToInt32(x)).ToArray();
-
-            var watch = new Stopwatch();
-            watch.Start();
+            Input = File.ReadLines("Input.txt").Select(x => Convert.ToInt32(x)).ToArray();            
 
             var numA = PartOne();
             var numB = PartTwo();
 
-            watch.Stop();
+            var (miliseconds, ticks) = Benchmark.Execute(() => { PartOne(); PartTwo(); });
+
             Console.WriteLine($"{numA}, {numB}");
-            Console.WriteLine(watch.ElapsedMilliseconds); // ~29 ms
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~21 ms
         }
 
         static int PartOne()
