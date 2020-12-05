@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -10,12 +9,12 @@ namespace Day04
     class Program
     {
         static string[] Input;
-        static string[] EyeColors =
+        static readonly string[] EyeColors =
         {
             "amb", "blu", "brn", "gry", "grn", "hzl", "oth"
         };
 
-        static Regex HairColor = new Regex(@"^#(?:[0-9a-f]{6})$");
+        static readonly Regex HairColor = new Regex(@"^#(?:[0-9a-f]{6})$");
 
         static void Main(string[] args)
         {
