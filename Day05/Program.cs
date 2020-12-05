@@ -7,7 +7,7 @@ namespace Day05
 {
     class Program
     {
-        static string[] Input;        
+        static string[] Input;
 
         static void Main(string[] args)
         {
@@ -48,8 +48,8 @@ namespace Day05
             for (var i = start; i < end; i++)
             {
                 if (boardingPass[i] == c)
-                        max -= (max - min + 1) / 2;
-                else                
+                    max -= (max - min + 1) / 2;
+                else
                     min += (max - min + 1) / 2;
             }
 
