@@ -15,10 +15,10 @@ namespace Day08
             Input = File.ReadLines("Input.txt").ToArray();
 
             var (one, two) = Task();
-            var (miliseconds, seconds) = Benchmark.Execute(() => Task());
+            var (miliseconds, ticks) = Benchmark.Execute(() => Task());
 
             Console.WriteLine($"{one}, {two}");
-            Console.WriteLine($"{miliseconds}, {seconds}"); // ~6000 ticks
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~6000 ticks
         }
 
         static (int, int) Task()

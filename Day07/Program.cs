@@ -17,10 +17,10 @@ namespace Day07
 
             var one = PartOne();
             var two = PartTwo("shiny gold") - 1;            
-            var (miliseconds, seconds) = Benchmark.Execute(() => { Input.Select(x => Parse(x)).ToArray(); PartOne(); PartTwo("shiny gold"); });
+            var (miliseconds, ticks) = Benchmark.Execute(() => { Input.Select(x => Parse(x)).ToArray(); PartOne(); PartTwo("shiny gold"); });
 
             Console.WriteLine($"{one}, {two}");
-            Console.WriteLine($"{miliseconds}, {seconds}"); // ~ 4.5 ms
+            Console.WriteLine($"{miliseconds}, {ticks}"); // ~ 4.5 ms
         }
 
         static int PartOne()
