@@ -17,7 +17,7 @@ namespace Day10
             var (one, two) = Task();
             var (miliseconds, ticks) = Benchmark.Execute(() => Task());
 
-            Console.WriteLine($"{max}, {total}");
+            Console.WriteLine($"{one}, {one}");
             Console.WriteLine($"{miliseconds}, {ticks}"); // ~500 ticks
         }
 
