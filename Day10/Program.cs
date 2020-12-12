@@ -14,7 +14,7 @@ namespace Day10
         {
             Input = File.ReadLines("Input.txt").Select(x => Convert.ToInt32(x)).ToArray();
 
-            var (max, total) = Task();
+            var (one, two) = Task();
             var (miliseconds, ticks) = Benchmark.Execute(() => Task());
 
             Console.WriteLine($"{max}, {total}");
@@ -62,7 +62,7 @@ namespace Day10
             }
 
             var count = RecursiveCount(0, max, 0);
-            return (max, count);
+            return (value, count);
         }
     }
 }
