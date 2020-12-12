@@ -52,7 +52,7 @@ namespace Day09
             {
                 long sum = 0;
                 var index = start;
-                while(sum < invalid)
+                while (sum < invalid)
                 {
                     sum += Input[index++];
                     if (sum == invalid)
